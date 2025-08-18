@@ -6,14 +6,13 @@
     <title>Conversation Viewer</title>
     <meta http-equiv="Content-Security-Policy" content="script-src 'self'"> 
     <style>
+        * { box-sizing: border-box; }
         body, html { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; height: 100%; overflow: hidden; }
         .container { display: flex; height: 100vh; }
-        #master-list { width: 30%; border-right: 1px solid #ccc; overflow-y: auto; padding: 0; margin: 0; }
+        #master-container { display: flex; flex-direction: column; width: 30%; border-right: 1px solid #ccc; }
         #detail-view { width: 70%; padding: 20px; overflow-y: auto; }
         #controls { padding: 15px; border-bottom: 1px solid #ccc; }
-        #master-container { display: flex; flex-direction: column; width: 30%; border-right: 1px solid #ccc; }
-        #master-list li { list-style-type: none; padding: 15px; border-bottom: 1px solid #eee; cursor: pointer; }
-        #master-list li:hover { background-color: #f0f0f0; }
+        #master-list { list-style-type: none; padding: 0; margin: 0; overflow-y: auto; flex-grow: 1; }
         #master-list li { list-style-type: none; padding: 15px; border-bottom: 1px solid #eee; cursor: pointer; transition: background-color 0.2s; }
         #master-list li:hover { background-color: #f0f0f0; }
         #master-list li.selected { background-color: #e6f2ff; color: #0056b3; font-weight: bold; }
