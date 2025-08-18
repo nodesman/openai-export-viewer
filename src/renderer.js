@@ -1,4 +1,7 @@
 
+const showdown = require('showdown');
+const converter = new showdown.Converter({ tables: true, strikethrough: true, tasklists: true });
+
 document.addEventListener('DOMContentLoaded', () => {
     const loadZipBtn = document.getElementById('load-zip-btn');
     const masterList = document.getElementById('master-list');
@@ -23,9 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             li.textContent = conv.title;
             li.dataset.index = index;
             li.addEventListener('click', async (event) => {
-                // Deselect others
                 document.querySelectorAll('#master-list li').forEach(item => item.classList.remove('selected'));
-                // Select clicked one
                 event.currentTarget.classList.add('selected');
                 
                 const selectedIndex = event.currentTarget.dataset.index;
@@ -50,16 +51,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const pairDiv = document.createElement('div');
             pairDiv.className = 'message-pair';
 
-            const userP = document.createElement('p');
-            userP.className = 'user';
-            userP.textContent = `You: ${pair.user}`;
+            const userBubble = document.createElement('div');
+            userBubble.className = 'message-bubble user-bubble';
+            userBubble.textContent = pair.user;
 
-            const assistantP = document.createElement('p');
-            assistantP.className = 'assistant';
-            assistantP.textContent = `Assistant: ${pair.assistant}`;
+            const assistantBubble = document.createElement('div');
+            assistantBubble.className = 'message-bubble assistant-bubble';
+            assistantBubble.innerHTML = converter.makeHtml(pair.assistant);
 
-            pairDiv.appendChild(userP);
-            pairDiv.appendChild(assistantP);
+            pairDiv.appendChild(userBubble);
+            pairDiv.appendChild(assistantBubble);
             detailView.appendChild(pairDiv);
         });
     }

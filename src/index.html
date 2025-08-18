@@ -15,9 +15,13 @@
         #master-list li { list-style-type: none; padding: 15px; border-bottom: 1px solid #eee; cursor: pointer; }
         #master-list li:hover { background-color: #f0f0f0; }
         #master-list li.selected { background-color: #007aff; color: white; }
-        .message-pair { margin-bottom: 20px; padding: 10px; border-radius: 8px; border: 1px solid #ddd; }
-        .message-pair .user { font-weight: bold; color: #333; }
-        .message-pair .assistant { margin-top: 8px; color: #555; white-space: pre-wrap; }
+        .message-pair { display: flex; flex-direction: column; margin-bottom: 15px; }
+        .message-bubble { max-width: 80%; padding: 10px 15px; border-radius: 18px; line-height: 1.5; word-wrap: break-word; }
+        .message-pair .user-bubble { background-color: #f0f0f0; color: #333; align-self: flex-end; }
+        .message-pair .assistant-bubble { background-color: #007aff; color: white; align-self: flex-start; }
+        .message-pair .assistant-bubble p { margin: 0; }
+        .message-pair .assistant-bubble pre { background-color: #2d2d2d; color: #f8f8f2; padding: 10px; border-radius: 5px; white-space: pre-wrap; }
+        .message-pair .assistant-bubble code { font-family: monospace; }
         button { font-size: 14px; padding: 10px 15px; border-radius: 5px; border: 1px solid #007aff; background-color: #007aff; color: white; cursor: pointer; }
         button:hover { background-color: #0056b3; }
     </style>
