@@ -18,11 +18,13 @@
         #master-list li.selected { background-color: #e6f2ff; color: #0056b3; font-weight: bold; }
         .message-pair { margin-bottom: 25px; display: flex; flex-direction: column; }
         .message-bubble { max-width: 85%; padding: 12px 18px; border-radius: 20px; line-height: 1.5; word-wrap: break-word; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
-        .user-bubble { background-color: #f0f0f0; color: #333; align-self: flex-end; border-bottom-right-radius: 4px; }
+        .user-bubble { background-color: #f0f0f0; color: #333; align-self: flex-end; border-bottom-right-radius: 4px; margin-bottom: 10px; }
         .assistant-bubble { background-color: #007aff; color: white; align-self: flex-start; border-bottom-left-radius: 4px; }
-        .assistant-bubble p { margin: 0 0 10px 0; }
+        .assistant-bubble p { margin: 0 0 1em 0; }
         .assistant-bubble p:last-child { margin-bottom: 0; }
-        .assistant-bubble pre { background-color: rgba(0,0,0,0.2); color: #f8f8f2; padding: 12px; border-radius: 8px; white-space: pre-wrap; }
+        .assistant-bubble ul, .assistant-bubble ol { margin: 1em 0; padding-left: 25px; }
+        .assistant-bubble li { margin-bottom: 0.5em; }
+        .assistant-bubble pre { margin: 1em 0; background-color: rgba(0,0,0,0.2); color: #f8f8f2; padding: 12px; border-radius: 8px; white-space: pre-wrap; }
         .assistant-bubble code { font-family: monospace; }
         button { font-size: 14px; padding: 10px 15px; border-radius: 5px; border: 1px solid #007aff; background-color: #007aff; color: white; cursor: pointer; }
         button:hover { background-color: #0056b3; }
