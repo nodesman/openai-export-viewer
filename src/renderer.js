@@ -1,5 +1,4 @@
 
-const showdown = require('showdown');
 const converter = new showdown.Converter({ tables: true, strikethrough: true, tasklists: true });
 
 document.addEventListener('DOMContentLoaded', () => {
