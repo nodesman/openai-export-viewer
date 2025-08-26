@@ -1,13 +1,19 @@
 {
-  "name": "electron-app",
+  "name": "openai-export-viewer",
   "version": "1.0.0",
-  "description": "",
+  "description": "An Electron app to view and export conversations from OpenAI's data export format.",
   "main": "src/main.js",
   "scripts": {
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "openai",
+    "electron",
+    "chatgpt",
+    "exporter",
+    "viewer"
+  ],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
