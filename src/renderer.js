@@ -5,6 +5,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadZipBtn = document.getElementById('load-zip-btn');
     const masterList = document.getElementById('master-list');
     const detailView = document.getElementById('detail-view');
+    const minBtn = document.getElementById('min-btn');
+    const maxBtn = document.getElementById('max-btn');
+    const closeBtn = document.getElementById('close-btn');
+
+    const platform = window.electronAPI.platform;
+    document.body.classList.add(platform === 'darwin' ? 'mac' : 'windows');
+
+    minBtn.addEventListener('click', () => window.electronAPI.windowControl('minimize'));
+    maxBtn.addEventListener('click', () => window.electronAPI.windowControl('maximize'));
+    closeBtn.addEventListener('click', () => window.electronAPI.windowControl('close'));
+
+    window.electronAPI.onWindowState((state) => {
+        if (state === 'maximized') {
+            maxBtn.classList.add('restore');
+        } else {
+            maxBtn.classList.remove('restore');
+        }
+    });
 
     let conversations = [];
 
@@ -27,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
             li.addEventListener('click', async (event) => {
                 document.querySelectorAll('#master-list li').forEach(item => item.classList.remove('selected'));
                 event.currentTarget.classList.add('selected');
-                
+
                 const selectedIndex = event.currentTarget.dataset.index;
                 const selectedConv = conversations[selectedIndex];
                 renderDetailView(selectedConv);
