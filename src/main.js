@@ -8,11 +8,23 @@ function createWindow() {
     const win = new BrowserWindow({
         width: 1200,
         height: 800,
+        frame: false,
+        transparent: true,
+        titleBarStyle: 'hidden',
+        backgroundColor: '#00000000',
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
             contextIsolation: true,
             nodeIntegration: false,
         },
+    });
+
+    win.on('maximize', () => {
+        win.webContents.send('window-state', 'maximized');
+    });
+
+    win.on('unmaximize', () => {
+        win.webContents.send('window-state', 'restored');
     });
 
     win.loadFile(path.join(__dirname, 'index.html'));
@@ -116,4 +128,23 @@ ipcMain.handle('extract-messages', (event, conversation) => {
         }
     }
     return pairedMessages;
+});
+
+ipcMain.on('window-control', (event, action) => {
+    const win = BrowserWindow.fromWebContents(event.sender);
+    switch (action) {
+        case 'minimize':
+            win.minimize();
+            break;
+        case 'maximize':
+            if (win.isMaximized()) {
+                win.unmaximize();
+            } else {
+                win.maximize();
+            }
+            break;
+        case 'close':
+            win.close();
+            break;
+    }
 });
